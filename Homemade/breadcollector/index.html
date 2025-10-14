@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Game</title>
+    <style>
+        @font-face {
+            font-family: Gamer;
+            src: url(Gamer.ttf);
+        }
+
+        body {
+            background-color: #050;
+            background-image: url("Textures/grass.png");
+            background-attachment: fixed;
+            background-size: 32px;
+            user-select: none;
+            overflow: hidden;
+        }
+
+        #player {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            width: 32px;
+            height: 32px;
+        }
+
+        #food {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+        }
+
+        #scorebox {
+            text-align: center;
+            color: #fff;
+            font-size: 100px;
+            font-family: Gamer;
+            text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 4px 0 black, 2px 4px 0 black;
+        }
+
+        #shop, #settings {
+            background-color: darkgrey;
+            padding: 5px;
+            font-family: Consolas, Monospace;
+        }
+
+        #scorebox {
+            position: sticky;
+            z-index: 10;
+        }
+
+        #shop, #shopfield, #settings {
+            position: fixed;
+            z-index: 9;
+        }
+
+        .volcontaners {
+            width: 100%;
+        }
+
+        .slider {
+            outline: none;
+            opacity: 0.7;
+        }
+
+        .slider:hover {
+            opacity: 1;
+        }
+
+        img {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="display: inline-block; z-index: 10;">
+        <button onclick="openshop()" id="openshop">Open Shop</button>
+        <button onclick="closeshop()" id="closeshop">Close Shop</button>
+        <button onclick="opensettings()" id="opensettings">Open Settings</button>
+        <button onclick="closesettings()" id="closesettings">Close Settings</button>
+        <button onclick="background.play();document.getElementById('musicselector').style.display = 'none';" id="musicselector">Music</button>
+    </div>
+    <img src="Textures/player.png" alt="☺" id="player"></img>
+    <img src="Textures/fooda.png" id="food" alt="food" height="32" width="32"></img>
+    <br>
+    <div id="shop">
+        <fieldset>
+            <legend>Shop</legend>
+            <button onclick="buy('speed')">+ Speed (15)</button>
+            <button onclick="buy('collect')">+ Collection (25)</button><br>
+            <button onclick="buy('scaled_add')">+ Scaled Add (100)</button>
+            <button onclick="buy('rarefood_chance')">+ Rare Food Chance (100)</button><br>
+            <button onclick="buy('size')">+ Size (500)</button><br>
+        </fieldset>
+        <p><b>Stats: </b><br></p>
+        <ul>
+            <li><p>Speed: <span id="speedstat"></span></p></li>
+            <li><p>Collection: <span id="collectstat"></span></p></li>
+            <li><p>Scaled Add: <span id="scaledaddstat"></span></p></li>
+            <li><p>Rare foods: <span id="rarefoodstat"></span></p></li>
+        </ul>
+    </div>
+    <div id="settings">
+        <fieldset>
+            <legend>Settings</legend>
+            <div class="volcontaners">
+                <input value="SfxVol" type="range" min="0" max="100" value="100" class="slider" id="sfxVol">
+                <label for="SfxVol">SFX Volume</label><br>
+                <input value="MusVol" type="range" min="0" max="100" value="100" class="slider" id="musVol">
+                <label for="MusVol">Music Volume</label><br>
+            </div>
+            <button onclick="cleardata()" style="background-color: red;">Erase all data</button>
+        </fieldset>
+    </div>
+    <p id="scorebox">Score: <span id="score"></span></p>
+
+
+    <script>
+        function randInt(min, max) {return Math.floor(Math.random() * (max - min + 1)) + min};
+        function isColliding(a, b) {
+            const rectA = a.getBoundingClientRect();
+            const rectB = b.getBoundingClientRect();
+            return !(rectA.top > rectB.bottom || rectA.bottom < rectB.top || rectA.left > rectB.right || rectA.right < rectB.left);
+        };
+        var elem = document.documentElement;
+        function openFullscreen() {
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.webkitRequestFullscreen) {
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) {
+                elem.msRequestFullscreen();
+            }
+        }
+
+        function openshop() {
+            closesettings()
+            document.getElementById("shop").style.display = "inherit";
+            document.getElementById("openshop").style.display = "none";
+            document.getElementById("closeshop").style.display = "inherit";
+        };
+
+        function closeshop() {
+            document.getElementById("shop").style.display = "none";
+            document.getElementById("openshop").style.display = "inherit";
+            document.getElementById("closeshop").style.display = "none";
+        };
+
+        function opensettings() {
+            closeshop()
+            document.getElementById("settings").style.display = "inherit";
+            document.getElementById("opensettings").style.display = "none";
+            document.getElementById("closesettings").style.display = "inherit";
+        };
+
+        function closesettings() {
+            document.getElementById("settings").style.display = "none";
+            document.getElementById("opensettings").style.display = "inherit";
+            document.getElementById("closesettings").style.display = "none";
+        };
+
+        function cleardata(){
+            if (prompt("Type DELETE to remove all of your hard work.") === "DELETE"){
+                location.reload();
+            } else {
+                alert("Resuming w/o deleting data.");
+            };
+        }
+
+        function buy(item){
+            if (item == "speed"){
+                if (score >= 15){
+                    movSpd += 0.5;
+                    score -= 15;
+                    levelup.play();
+                    return true;
+                } else {
+                    nobuy.play();
+                    return false;
+                };
+            } else if (item == "collect"){
+                if (score >= 25){
+                    collect += 1;
+                    score -= 25;
+                    levelup.play();
+                    return true;
+                } else {
+                    nobuy.play();
+                    return false;
+                };
+            } else if (item == "scaled_add"){
+                if (score >= 100){
+                    scaled_add += 1;
+                    score -= 100;
+                    levelup.play();
+                    return true;
+                } else {
+                    nobuy.play();
+                    return false;
+                };
+            } else if (item == "rarefood_chance"){
+                if (score >= 100){
+                    foodS_chance -= 1;
+                    score -= 100;
+                    levelup.play();
+                    return true;
+                } else {
+                    nobuy.play();
+                    return false;
+                };
+            } else if (item == "size"){
+                if (score >= 500){
+                    score -= 500;
+                    playerS *= 2;
+                    document.getElementById("player").style.width = playerS +"px";
+                    document.getElementById("player").style.height = playerS +"px";
+                    levelup.play();
+                    return true;
+                } else {
+                    nobuy.play();
+                    return false;
+                };
+            };
+        };
+
+        var sliderSfxVol = document.getElementById("sfxVol");
+        sliderSfxVol.oninput = function() {
+            pickup.volume = this.value / 100;
+            levelup.volume = this.value / 100;
+            nobuy.volume = this.value / 100;
+            rarefind.volume = this.value / 100;
+        }
+
+        var sliderMusVol = document.getElementById("musVol");
+        sliderMusVol.oninput = function() {
+            background.volume = this.value / 100;
+        }
+
+        const player = document.getElementById("player");
+        const food = document.getElementById("food");
+        const foodPadding = 50;
+
+        const pickup = new Audio("Audio/collect.mp3");
+        const levelup = new Audio("Audio/levelup.mp3");
+        const nobuy = new Audio("Audio/nobuy.mp3");
+        const background = new Audio("Audio/background.mp3");
+        const rarefind = new Audio("Audio/rarefind.mp3")
+
+        background.loop = true;
+
+        let playerY = window.screen.width/2;
+        let playerX = window.screen.height/2;
+        let playerD = 0;
+        let playerS = 32;
+
+        let score = 0;
+        let movSpd = 1.5;
+        let collect = 1;
+        let scaled_add = 0;
+        let rarefoodstat = 0;
+
+        let foodX = randInt(0,window.screen.width-foodPadding);
+        let foodY = randInt(0,window.screen.height-foodPadding);
+        let foodS = false;
+        let foodS_chance = 100;
+
+        let deleted_cookies = false
+
+        const keys = {};
+
+        document.addEventListener("keydown", e => keys[e.key] = true);
+        document.addEventListener("keyup", e => keys[e.key] = false);
+
+        setInterval(()=>{score += scaled_add;}, 1000)
+
+        function gameLoop() {
+            const screenW = window.innerWidth;
+            const screenH = window.innerHeight;
+            if (playerY < 0) playerY = 0;
+            if (playerX < 0) playerX = 0;
+            if (playerY + player.offsetHeight > screenH) playerY = screenH - player.offsetHeight;
+            if (playerX + player.offsetWidth > screenW) playerX = screenW - player.offsetWidth;
+            if (keys["ArrowUp"] || keys["w"]) playerD = -90;
+            if (keys["ArrowDown"] || keys["s"]) playerD = 90;
+            if (keys["ArrowLeft"] || keys["a"]) playerD = 180;
+            if (keys["ArrowRight"] || keys["d"]) playerD = 0;
+            if (keys["f"]){openFullscreen()};
+
+            if (keys["ArrowUp"] || keys["w"]) playerY -= movSpd;
+            if (keys["ArrowDown"] || keys["s"]) playerY += movSpd;
+            if (keys["ArrowLeft"] || keys["a"]) playerX -= movSpd;
+            if (keys["ArrowRight"] || keys["d"]) playerX += movSpd;
+
+            if (isColliding(food, player)){
+                foodX = randInt(0,window.screen.width-foodPadding);
+                foodY = randInt(0,window.screen.height-foodPadding);
+                pickup.play();
+                if(foodS){score += collect*5} else {score += collect;}
+                if (randInt(1, foodS_chance) == 1){
+                    document.getElementById("food").src = "Textures/foodb.png";
+                    foodS = true;
+                    rarefoodstat += 1;
+                    rarefind.play()
+                } else {
+                    document.getElementById("food").src = "Textures/fooda.png";
+                    foodS = false;
+                }
+            };
+
+            document.getElementById("speedstat").innerText = movSpd;
+            document.getElementById("collectstat").innerText = collect;
+            document.getElementById("scaledaddstat").innerText = scaled_add;
+            document.getElementById("rarefoodstat").innerText = rarefoodstat;
+
+            document.getElementById("score").innerText = score;
+            player.style.transform = `rotate(${playerD}deg)`;
+            player.style.top = playerY + "px";
+            player.style.left = playerX + "px";
+            food.style.top = foodY + "px";
+            food.style.left = foodX + "px";
+            requestAnimationFrame(gameLoop);
+        };
+
+        closesettings();
+        closeshop();
+        gameLoop();
+    </script>
+</body>
+</html>
