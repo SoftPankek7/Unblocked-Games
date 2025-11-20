@@ -3,7 +3,7 @@ modules = ["web"]
 
 [nix]
 channel = "stable-24_11"
-packages = ["static-web-server", "cope"]
+packages = ["static-web-server", "cope", "python310"]
 
 [deployment]
 publicDir = "/"
