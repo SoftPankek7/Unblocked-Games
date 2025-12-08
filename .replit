@@ -1,4 +1,6 @@
 entrypoint = "main.html"
+
+
 modules = ["web"]
 
 [nix]
@@ -31,3 +33,10 @@ externalPort = 80
 
 [agent]
 expertMode = true
+
+[web_server]
+route_priority = "source"
+
+[[web_server.routes]]
+path = "/"
+target = "/system/index.html"
