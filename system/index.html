@@ -66,6 +66,9 @@ A walking whoopee cushion, heaven-sent.
       background-image: url('background.png');
       margin: 0;
       font-size: 20px;
+
+      color: #222;
+      background-color: #eee;
     }
 
     #backgr {
@@ -97,97 +100,141 @@ A walking whoopee cushion, heaven-sent.
       position: fixed;
       width: 100%;
     }
+
+    #top {
+      backdrop-filter: blur(2px) saturate(200%);
+      -webkit-backdrop-filter: blur(2px) saturate(200%);
+      background-color: rgba(108, 108, 252, 0.6);
+      border-radius: 12px;
+      border: 1px solid rgba(209, 213, 219, 0.3);
+      position: fixed;
+
+      width: 100vw;
+      margin-left: 0;
+
+      text-align: center;
+      padding: 10px;
+    }
+
+    #contentWrapper {
+      margin-top: 100px;
+    }
+
+    #title {
+      -webkit-text-stroke: 1.5px #222;
+      -webkit-text-fill-color: #eee;
+    }
+
+    /* Hide Scrollbar hack by Charlie */
+    ::-webkit-scrollbar {
+      width: 0px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #ffffff00;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #ffffff00;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ffffff00;
+    }
   </style>
 </head>
 
 <body>
-  <div id="announce">
+  <div id="top">
+    <h1 id="title">Charlie's Unblocked Games!</h1>
     <a href="https://forms.office.com/e/WQ4pnLYdHN">You can now Add More Games!</a>
   </div>
   <div id="backgr">
-    <h1 style="text-align: center;">Charlie's Unblocked Games!</h1>
-    <fieldset>
+    <div id="contentWrapper">
+      <fieldset>
 
-      <legend>
-        <p>FNAF</p>
-      </legend>
-      <ul>
-        <li><a href="/fnaf">FNAF 1</a><br></li>
-        <li><a href="/fnaf2">FNAF 2</a><br></li>
-        <li><a href="/fnaf3">FNAF 3</a><br></li>
-        <li><a href="/fnaf4">FNAF 4</a><br></li>
-      </ul>
-    </fieldset>
-    <fieldset>
-      <legend>
-        <p>Slope</p>
-      </legend>
-      <ul>
-        <li><a href="/slope">Slope</a><br></li>
-        <li><a href="/slope2">Slope 2</a><br></li>
-      </ul>
-    </fieldset>
-    <fieldset>
-      <legend>
-        <p>Moto X3M</p>
-      </legend>
-      <ul>
-        <li><a href="/motox3m">Moto X3M</a></li>
-        <li><a href="/motox3m-pool">Moto X3M Pool</a></li>
-        <li><a href="/motox3m-spooky">Moto X3M Spooky</a></li>
-        <li><a href="/motox3m-winter">Moto X3M Winter</a></li>
-      </ul>
-    </fieldset>
-    <fieldset>
-      <legend>
-        <p>Time Shooter</p>
-      </legend>
-      <ul>
-        <li><a href="/timeshooter1">Time Shooter</a><br></li>
-        <li><a href="/timeshooter2">Time Shooter 2</a><br></li>
-        <li><a href="/timeshooter3">Time Shooter 3</a><br></li>
-      </ul>
-    </fieldset>
-    <fieldset>
-      <legend>
-        <p>Fireboy Watergirl</p>
-      </legend>
-      <ul>
-        <li><a href="/fireboywatergirl">Fireboy Watergirl</a><br></li>
-        <li><a href="/fireboywatergirl2">Fireboy Watergirl 2</a><br></li>
-      </ul>
-    </fieldset>
-    <fieldset>
-      <legend>
-        <p>Others</p>
-      </legend>
-      <ul>
-        <li><a href=" /cookieclicker">Cookie Clicker</a><br></li>
-        <li><a href="/ducklife6">Duck Life 6</a></li>
-        <li><a href="/paperio">Paper IO</a></li>
-        <li><a href="/minecraft">Minecraft 1.8.8</a></li>
-        <li><a href="/subway">Subway Surfers</a></li>
-        <li><a href="/skibiditoiletattack">Skibidi Toilet Attack (Requested By Adem B)</a></li>
-        <li><a href="/snowrider3d">Snow Rider 3D</a></li>
-        <li><a href="/tinyfishing">Tiny Fishing</a></li>
-        <li><a href="/madalincars">Maladin Cars</a></li>
-        <li><a href="/jetpackjoyride">Jetpack Joyride</a></li>
-        <li><a href="/death-run-3d">Death Run 3D</a></li>
-        <li><a href="/amongus">Among Us</a></li>
-        <li><a href="/factoryballsforever">Factory Balls Forever</a></li>
-        <li><a href="/doodlejump">Doodle Jump</a></li>
-        <li><a href="/fruitninja">Fruit Ninja</a></li>
-        <li><a href="/block-blast">Block Blast</a> </li>
-        <li><a href="/RocketLeauge2d/">Rocket Leauge 2d</a></li>
-        <li><a href="/turbowarp/">TurboWarp</a></li>
-      </ul>
-    </fieldset>
+        <legend>
+          <p>FNAF</p>
+        </legend>
+        <ul>
+          <li><a href="/fnaf">FNAF 1</a><br></li>
+          <li><a href="/fnaf2">FNAF 2</a><br></li>
+          <li><a href="/fnaf3">FNAF 3</a><br></li>
+          <li><a href="/fnaf4">FNAF 4</a><br></li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <p>Slope</p>
+        </legend>
+        <ul>
+          <li><a href="/slope">Slope</a><br></li>
+          <li><a href="/slope2">Slope 2</a><br></li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <p>Moto X3M</p>
+        </legend>
+        <ul>
+          <li><a href="/motox3m">Moto X3M</a></li>
+          <li><a href="/motox3m-pool">Moto X3M Pool</a></li>
+          <li><a href="/motox3m-spooky">Moto X3M Spooky</a></li>
+          <li><a href="/motox3m-winter">Moto X3M Winter</a></li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <p>Time Shooter</p>
+        </legend>
+        <ul>
+          <li><a href="/timeshooter1">Time Shooter</a><br></li>
+          <li><a href="/timeshooter2">Time Shooter 2</a><br></li>
+          <li><a href="/timeshooter3">Time Shooter 3</a><br></li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <p>Fireboy Watergirl</p>
+        </legend>
+        <ul>
+          <li><a href="/fireboywatergirl">Fireboy Watergirl</a><br></li>
+          <li><a href="/fireboywatergirl2">Fireboy Watergirl 2</a><br></li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <p>Others</p>
+        </legend>
+        <ul>
+          <li><a href="/cookieclicker">Cookie Clicker</a><br></li>
+          <li><a href="/ducklife6">Duck Life 6</a></li>
+          <li><a href="/paperio">Paper IO</a></li>
+          <li><a href="/minecraft">Minecraft 1.8.8</a></li>
+          <li><a href="/subway">Subway Surfers</a></li>
+          <li><a href="/skibiditoiletattack">Skibidi Toilet Attack (Requested By Adem B)</a></li>
+          <li><a href="/snowrider3d">Snow Rider 3D</a></li>
+          <li><a href="/tinyfishing">Tiny Fishing</a></li>
+          <li><a href="/madalincars">Maladin Cars</a></li>
+          <li><a href="/jetpackjoyride">Jetpack Joyride</a></li>
+          <li><a href="/death-run-3d">Death Run 3D</a></li>
+          <li><a href="/amongus">Among Us</a></li>
+          <li><a href="/factoryballsforever">Factory Balls Forever</a></li>
+          <li><a href="/doodlejump">Doodle Jump</a></li>
+          <li><a href="/fruitninja">Fruit Ninja</a></li>
+          <li><a href="/block-blast">Block Blast</a> </li>
+          <li><a href="/RocketLeauge2d/">Rocket Leauge 2d</a></li>
+          <li><a href="/turbowarp/">TurboWarp</a></li>
+          <li><a href="/cuttherope/">Cut The Rope</a></li>
+        </ul>
+      </fieldset>
+    </div>
   </div>
-  <a href="Homemade/">Homemade Games >></a>
+  <a href="/Homemade/">Homemade Games >></a>
   <hr>
   <a href="credits.html">Made by Devs</a>
   <br>
-  <a style="text-align: center;" href="TOS/">Make sure to check out the TOS</a>
+  <a style="text-align: center;" href="/TOS/">Make sure to check out the TOS</a>
 </body>
 
 </html>
