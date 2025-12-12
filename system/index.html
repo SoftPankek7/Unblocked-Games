@@ -51,6 +51,9 @@ Freddie, a gaseous explosion grand,
 A tale of flatulence, across the land.
 He thunders deep, a seismic event,
 A walking whoopee cushion, heaven-sent.
+Freddie, a stench that knows no end,
+A fragrant fiend, a troublesome friend.
+He clears the room, with a fetid gust.
 
 -->
 
@@ -63,12 +66,25 @@ A walking whoopee cushion, heaven-sent.
   <style>
     body {
       font-family: sans-serif;
-      background-image: url('background.png');
       margin: 0;
       font-size: 20px;
 
-      color: #222;
-      background-color: #eee;
+      background-color: #1a1a1a;
+      color: #eee;
+
+      background-image: radial-gradient(circle, rgba(255, 255, 255, .15) 1px, transparent 1px);
+      background-size: 30px 30px;
+      animation: gridMove 10s linear infinite
+    }
+
+    @keyframes gridMove {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: 60px 30px;
+      }
     }
 
     #backgr {
@@ -102,11 +118,11 @@ A walking whoopee cushion, heaven-sent.
     }
 
     #top {
-      backdrop-filter: blur(2px) saturate(200%);
-      -webkit-backdrop-filter: blur(2px) saturate(200%);
-      background-color: rgba(108, 108, 252, 0.6);
-      border-radius: 12px;
-      border: 1px solid rgba(209, 213, 219, 0.3);
+      backdrop-filter: blur(1px) saturate(200%);
+      -webkit-backdrop-filter: blur(1px) saturate(200%);
+      background-color: rgba(50, 50, 50, .15);
+      border: 1px solid rgba(255, 255, 255, .125);
+      border-radius: 0 0 10px 10px;
       position: fixed;
 
       width: 100vw;
@@ -118,11 +134,6 @@ A walking whoopee cushion, heaven-sent.
 
     #contentWrapper {
       margin-top: 100px;
-    }
-
-    #title {
-      -webkit-text-stroke: 1.5px #222;
-      -webkit-text-fill-color: #eee;
     }
 
     /* Hide Scrollbar hack by Charlie */
@@ -141,13 +152,21 @@ A walking whoopee cushion, heaven-sent.
     ::-webkit-scrollbar-thumb:hover {
       background: #ffffff00;
     }
+
+    fieldset {
+      border-radius: 10px;
+    }
   </style>
+  <link rel="stylesheet" href="colours.css">
 </head>
 
 <body>
   <div id="top">
-    <h1 id="title">Charlie's Unblocked Games!</h1>
-    <a href="https://forms.office.com/e/WQ4pnLYdHN">You can now Add More Games!</a>
+    <h1 id="title"><span class="anim-text-flow txt">
+        <span>C</span><span>h</span><span>a</span><span>r</span><span>l</span><span>i</span><span>e</span><span>'</span><span>s</span><span>
+          <span>U</span><span>n</span><span>b</span><span>l</span><span>o</span><span>c</span><span>k</span><span>e</span><span>d</span><span>
+            <span>G</span><span>a</span><span>m</span><span>e</span><span>s</span><span>!</span></span></h1>
+    <a href="https://forms.office.com/e/WQ4pnLYdHN"><i>Add a game</i></a>
   </div>
   <div id="backgr">
     <div id="contentWrapper">
@@ -224,7 +243,6 @@ A walking whoopee cushion, heaven-sent.
           <li><a href="/cookieclicker">Cookie Clicker</a><br></li>
           <li><a href="/ducklife6">Duck Life 6</a></li>
           <li><a href="/paperio">Paper IO</a></li>
-          <li><a href="/minecraft">Minecraft 1.8.8</a></li>
           <li><a href="/subway">Subway Surfers</a></li>
           <li><a href="/skibiditoiletattack">Skibidi Toilet Attack (Requested By Adem B)</a></li>
           <li><a href="/snowrider3d">Snow Rider 3D</a></li>
@@ -240,6 +258,7 @@ A walking whoopee cushion, heaven-sent.
           <li><a href="/RocketLeauge2d/">Rocket Leauge 2d</a></li>
           <li><a href="/turbowarp/">TurboWarp</a></li>
           <li><a href="/cuttherope/">Cut The Rope</a></li>
+          <li><a href="/superhot/">Super Hot</a></li>
         </ul>
       </fieldset>
     </div>
