@@ -63,7 +63,27 @@ He clears the room, with a fetid gust.
 <head>
   <title>Charlie's UB Games!</title>
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="snow.js"></script>
   <style>
+    #snowflakeContainer {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      display: none;
+    }
+
+    .snowflake {
+      position: fixed;
+      background-color: #CCC;
+      z-index: 1000;
+      pointer-events: none;
+      border-radius: 50%;
+      width: 10px;
+      height: 10px;
+    }
+
+
+
     body {
       font-family: sans-serif;
       margin: 0;
@@ -74,7 +94,8 @@ He clears the room, with a fetid gust.
 
       background-image: radial-gradient(circle, rgba(255, 255, 255, .15) 1px, transparent 1px);
       background-size: 30px 30px;
-      animation: gridMove 10s linear infinite
+      animation: gridMove 10s linear infinite;
+      user-select: none;
     }
 
     @keyframes gridMove {
@@ -118,9 +139,9 @@ He clears the room, with a fetid gust.
     }
 
     #top {
-      backdrop-filter: blur(1px) saturate(200%);
-      -webkit-backdrop-filter: blur(1px) saturate(200%);
-      background-color: rgba(50, 50, 50, .15);
+      backdrop-filter: blur(10px) saturate(200%);
+      -webkit-backdrop-filter: blur(10px) saturate(200%);
+      background-color: rgba(50, 50, 50, .25);
       border: 1px solid rgba(255, 255, 255, .125);
       border-radius: 0 0 10px 10px;
       position: fixed;
@@ -161,12 +182,16 @@ He clears the room, with a fetid gust.
 </head>
 
 <body>
+  <div id="snowflakeContainer">
+    <span class="snowflake"></span>
+  </div>
   <div id="top">
     <h1 id="title"><span class="anim-text-flow txt">
         <span>C</span><span>h</span><span>a</span><span>r</span><span>l</span><span>i</span><span>e</span><span>'</span><span>s</span><span>
           <span>U</span><span>n</span><span>b</span><span>l</span><span>o</span><span>c</span><span>k</span><span>e</span><span>d</span><span>
             <span>G</span><span>a</span><span>m</span><span>e</span><span>s</span><span>!</span></span></h1>
-    <a href="https://forms.office.com/e/WQ4pnLYdHN"><i>Add a game</i></a>
+    <a href="https://forms.office.com/e/WQ4pnLYdHN"><i>Add a game</i></a> |
+    <a href="countdown/"><i>Countdown until Christmas Break</i></a>
   </div>
   <div id="backgr">
     <div id="contentWrapper">
@@ -204,6 +229,15 @@ He clears the room, with a fetid gust.
       </fieldset>
       <fieldset>
         <legend>
+          <p>osu!</p>
+        </legend>
+        <ul>
+          <li><a href="/osu">osu!</a></li>
+          <li><a href="/osumania">osu! mania</a></li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>
           <p>Time Shooter</p>
         </legend>
         <ul>
@@ -219,6 +253,20 @@ He clears the room, with a fetid gust.
         <ul>
           <li><a href="/fireboywatergirl">Fireboy Watergirl</a><br></li>
           <li><a href="/fireboywatergirl2">Fireboy Watergirl 2</a><br></li>
+        </ul>
+      </fieldset>
+      <fieldset>
+        <legend>
+          <p>Vex</p>
+        </legend>
+        <ul>
+          <li><a href="/vex">Vex</a><br></li>
+          <li><a href="/vex2">Vex 2</a><br></li>
+          <li><a href="/vex3">Vex 3</a><br></li>
+          <li><a href="/vex4">Vex 4</a><br></li>
+          <li><a href="/vex5">Vex 5</a><br></li>
+          <li><a href="/vex6">Vex 6</a><br></li>
+          <li><a href="/vex7">Vex 7</a><br></li>
         </ul>
       </fieldset>
       <fieldset>
@@ -267,7 +315,7 @@ He clears the room, with a fetid gust.
   <hr>
   <a href="credits.html">Made by Devs</a>
   <br>
-  <a style="text-align: center;" href="/TOS/">Make sure to check out the TOS</a>
+  <a style="text-align: center;" href="/TOS/">Make sure to check out the ToS</a>
 </body>
 
 </html>
