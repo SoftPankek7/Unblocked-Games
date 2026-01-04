@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="snow.js"></script>
+    <title>Please Turn On JavaScript.</title>
+    <style>
+        #snowflakeContainer {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            display: none;
+        }
+
+        .snowflake {
+            position: fixed;
+            background-color: #CCC;
+            z-index: 1000;
+            pointer-events: none;
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="snowflakeContainer">
+        <span class="snowflake"></span>
+    </div>
+    <div class="container">
+        <span class="txt anim-text-flow" id="bigText">--:--:--</span>
+        <p id="caption">Maybe turn on JavaScript..</p>
+    </div>
+    <a href="https://www.github.com/softpankek7" id="footnote">Made with &hearts; by Charlie</a>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@hiseb/confetti@2.1.0/dist/confetti.min.js"></script>
+    <script>
+        function addText(string) {
+            const o = string;
+            document.getElementById("bigText").textContent = o, $(".txt").html((function (t, n) {
+                return "<span>" + $.trim(n).split("").join("</span><span>") + "</span>"
+            }))
+        }
+
+        function setCaption(string) {
+            document.getElementById("caption").innerText = string;
+        }
+    </script>
+    <script>
+        setCaption("Calculating Time.. Please Wait!");
+        document.title = "Calculating Time.. Please Wait!";
+        function tryPlayMusic() {
+            music.play().then(function () {
+                document.removeEventListener("click", tryPlayMusic);
+                document.removeEventListener("keydown", tryPlayMusic);
+                document.removeEventListener("touchstart", tryPlayMusic);
+            }).catch(function (error) {
+                console.log("Autoplay still blocked:", error);
+            });
+        }
+
+        document.addEventListener("click", tryPlayMusic);
+        document.addEventListener("keydown", tryPlayMusic);
+        document.addEventListener("touchstart", tryPlayMusic);
+        music.play().catch(function () {console.log("Autoplay blocked - waiting for user interaction")});
+
+        var x = setInterval(function () {
+            var now = new Date().getTime();
+            var distance = new Date("Dec 20, 2025 09:00:00").getTime() - now;
+            var days = Math.floor(distance / 86400000);
+            var hours = Math.floor((distance % (86400000)) / 3600000);
+            var minutes = Math.floor((distance % (3600000)) / 60000);
+            var seconds = Math.floor((distance % (60000)) / 1000);
+
+            document.title = days + ":" + hours + ":"
+                + minutes + ":" + seconds + " Left!";
+
+            if (distance < 60000) {
+                addText(seconds + "s ")
+            } else {
+                if (distance < 3600000) {
+                    addText(minutes + "m " + seconds + "s ");
+                } else {
+                    if (distance < 86400000) {
+                        addText(hours + "h " + minutes + "m " + seconds + "s ");
+                    } else {
+                        addText(days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
+                    }
+                }
+            }
+
+            if (distance < 0) {
+                clearInterval(x);
+                addText("Happy Birthday, Freddie!");
+                document.title = "Happy Birthday, Freddie!";
+                doneSound.play();
+                // Thank you, https://confettijs.org/
+                confetti({
+                    count: 10000,	    // Number of particles
+                    size: 1,			// Size of the particles
+                    velocity: 200,		// Initial particle velocity
+                    fade: false			// Particles fall off the screen, or fade out
+                });
+                setCaption("");
+            } else {
+                setCaption("Until Freddie's Birthday!");
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>
