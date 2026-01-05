@@ -1,0 +1,61 @@
+<head>
+	<title>Image Wall</title>
+	<style>
+		body {
+			background-color: #000;
+			margin: 0;
+			padding: 0;
+			color: #eee;
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+		}
+
+		#top {
+			position: fixed;
+			top: 0;
+			background-color: #f00;
+			width: 100vw;
+			text-align: center;
+			height: 3%;
+		}
+
+		img {
+			padding-top: 10px;
+		}
+
+		img: {
+			background-image: url("avail.png") 100% 100% no-repeat;
+		}
+
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+
+		::-webkit-scrollbar {
+			width: 0px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="top">
+		<span
+			><a href="/system/">Go to home</a> |
+			<a href="https://forms.office.com/e/9WicLvWpgb">Add an Image!</a></span
+		>
+	</div>
+	<p>Some text for padding</p>
+	<script>
+		size = 128;
+		amount = 256;
+
+		for (let i = 1; i < amount + 1; i++) {
+			const img = document.createElement("img");
+			img.src = i + ".png";
+			img.width = size;
+			img.height = size;
+			img.alt = "Image " + i + " is available!";
+			document.body.appendChild(img);
+		}
+	</script>
+</body>
