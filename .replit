@@ -1,4 +1,4 @@
-entrypoint = "main.html"
+entrypoint = "/system/index.html"
 modules = ["nodejs-20", "web"]
 
 [nix]
