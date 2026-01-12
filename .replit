@@ -39,6 +39,6 @@ expertMode = true
 [web_server]
 route_priority = "source"
 
-[[web_server.routes]]
-path = "/"
-target = "/system/index.html"
+[[deployment.rewrites]]
+from = "/*"
+to = "/system"
