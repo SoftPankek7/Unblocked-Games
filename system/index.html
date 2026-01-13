@@ -65,313 +65,338 @@ He leaves behind, a lingering trace,
 <html>
 
 <head>
-  <title>Charlie's UB Games!</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="snow.js"></script>
-  <style>
-    #snowflakeContainer {
-      position: absolute;
-      left: 0px;
-      top: 0px;
-      display: none;
-    }
+	<title>Charlie's UB Games!</title>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+	<script src="snow.js"></script>
+	<style>
+		#snowflakeContainer {
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			display: none;
+		}
 
-    .snowflake {
-      position: fixed;
-      background-color: #CCC;
-      z-index: 1000;
-      pointer-events: none;
-      border-radius: 50%;
-      width: 10px;
-      height: 10px;
-    }
+		.snowflake {
+			position: fixed;
+			background-color: #CCC;
+			z-index: 1000;
+			pointer-events: none;
+			border-radius: 50%;
+			width: 10px;
+			height: 10px;
+		}
 
 
 
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      font-size: 20px;
+		body {
+			font-family: sans-serif;
+			margin: 0;
+			font-size: 20px;
 
-      background-color: #1a1a1a;
-      color: #eee;
+			background-color: #1a1a1a;
+			color: #eee;
 
-      background-image: radial-gradient(circle, rgba(255, 255, 255, .15) 1px, transparent 1px);
-      background-size: 30px 30px;
-      animation: gridMove 10s linear infinite;
-      user-select: none;
-    }
+			background-image: radial-gradient(circle, rgba(255, 255, 255, .15) 1px, transparent 1px);
+			background-size: 30px 30px;
+			animation: gridMove 10s linear infinite;
+			user-select: none;
+		}
 
-    @keyframes gridMove {
-      0% {
-        background-position: 0 0;
-      }
+		@keyframes gridMove {
+			0% {
+				background-position: 0 0;
+			}
 
-      100% {
-        background-position: 60px 30px;
-      }
-    }
+			100% {
+				background-position: 60px 30px;
+			}
+		}
 
-    #backgr {
-      border-radius: 50px;
-      padding: 25px;
-    }
+		#backgr {
+			border-radius: 50px;
+			padding: 25px;
+		}
 
-    a {
-      text-decoration: none;
-      color: inherit;
-      font-weight: bold;
-    }
+		a {
+			text-decoration: none;
+			color: inherit;
+			font-weight: bold;
+		}
 
-    a:hover {
-      font-weight: 900;
-    }
+		a:hover {
+			font-weight: 900;
+		}
 
-    legend {
-      text-align: center;
-    }
+		legend {
+			text-align: center;
+		}
 
-    #announce {
-      text-align: center;
-      background-color: red;
-      color: #000;
-      margin-top: 0;
-      padding: 10px;
-      border-radius: 0 0 10px 10px;
-      position: fixed;
-      width: 100%;
-    }
+		#announce {
+			text-align: center;
+			background-color: red;
+			color: #000;
+			margin-top: 0;
+			padding: 10px;
+			border-radius: 0 0 10px 10px;
+			position: fixed;
+			width: 100%;
+		}
 
-    #top {
-      backdrop-filter: blur(10px) saturate(200%);
-      -webkit-backdrop-filter: blur(10px) saturate(200%);
-      background-color: rgba(50, 50, 50, .25);
-      border: 1px solid rgba(255, 255, 255, .125);
-      border-radius: 0 0 10px 10px;
-      position: fixed;
+		#top {
+			backdrop-filter: blur(10px) saturate(200%);
+			-webkit-backdrop-filter: blur(10px) saturate(200%);
+			background-color: rgba(50, 50, 50, .25);
+			border: 1px solid rgba(255, 255, 255, .125);
+			border-radius: 0 0 10px 10px;
+			position: fixed;
 
-      width: 100vw;
-      margin-left: 0;
+			width: 100vw;
+			margin-left: 0;
 
-      text-align: center;
-      padding: 10px;
-    }
+			text-align: center;
+			padding: 10px;
+		}
 
-    #contentWrapper {
-      margin-top: 100px;
-    }
+		#contentWrapper {
+			margin-top: 100px;
+		}
 
-    /* Hide Scrollbar hack by Charlie */
-    ::-webkit-scrollbar {
-      width: 0px;
-    }
+		/* Hide Scrollbar hack by Charlie */
+		::-webkit-scrollbar {
+			width: 0px;
+		}
 
-    ::-webkit-scrollbar-track {
-      background: #ffffff00;
-    }
+		::-webkit-scrollbar-track {
+			background: #ffffff00;
+		}
 
-    ::-webkit-scrollbar-thumb {
-      background: #ffffff00;
-    }
+		::-webkit-scrollbar-thumb {
+			background: #ffffff00;
+		}
 
-    ::-webkit-scrollbar-thumb:hover {
-      background: #ffffff00;
-    }
+		::-webkit-scrollbar-thumb:hover {
+			background: #ffffff00;
+		}
 
-    fieldset {
-      border-radius: 10px;
-    }
-  </style>
-  <link rel="stylesheet" href="/colours.css">
+		fieldset {
+			border-radius: 10px;
+		}
+
+
+
+		/* Modal Styling */
+
+		dialog {
+			border-radius: 10px;
+			padding: 10px;
+			backdrop-filter: blur(10px) saturate(200%);
+			-webkit-backdrop-filter: blur(10px) saturate(200%);
+			background-color: rgba(50, 50, 50, .25);
+			border: 1px solid rgba(255, 255, 255, .125);
+			color: #eee;
+			padding: 5%;
+			text-align: center;
+			
+			font-size: 2.5vh;
+		}
+
+		dialog button {
+			padding: 2.5vh;
+			margin-top: 2vh;
+
+			border-radius: 10px;
+			border: none;
+			backdrop-filter: blur(10px) saturate(200%);
+			-webkit-backdrop-filter: blur(10px) saturate(200%);
+			background-color: rgba(50, 50, 50, .15);
+			border: 1px solid rgba(255, 255, 255, .025);
+			color: #eee;
+		}
+	</style>
+	<link rel="stylesheet" href="/colours.css">
 </head>
 
 <body>
-  <!-- Add when its christmas --><!-- 
-  <div id="snowflakeContainer">
-    <span class="snowflake"></span>
-  </div>-->
-  <div id="top">
-    <h1 id="title"><span class="anim-text-flow txt">
-        <span>C</span><span>h</span><span>a</span><span>r</span><span>l</span><span>i</span><span>e</span><span>'</span><span>s</span><span>
-          <span>U</span><span>n</span><span>b</span><span>l</span><span>o</span><span>c</span><span>k</span><span>e</span><span>d</span><span>
-            <span>G</span><span>a</span><span>m</span><span>e</span><span>s</span><span>!</span></span></h1>
-    <span><a href="https://forms.office.com/e/WQ4pnLYdHN"><i>Add a game</i></a> |
-      <a href="imageWall/"><i>Image Wall</i></a></span>
-  </div>
-  <div id="backgr">
-    <div id="contentWrapper">
+	<!-- Add when its christmas --><!-- 
+	<div id="snowflakeContainer">
+		<span class="snowflake"></span>
+	</div>-->
+	<div id="top">
+		<h1 id="title"><span class="anim-text-flow txt">
+				<span>C</span><span>h</span><span>a</span><span>r</span><span>l</span><span>i</span><span>e</span><span>'</span><span>s</span><span>
+					<span>U</span><span>n</span><span>b</span><span>l</span><span>o</span><span>c</span><span>k</span><span>e</span><span>d</span><span>
+						<span>G</span><span>a</span><span>m</span><span>e</span><span>s</span><span>!</span></span></h1>
+		<span><a href="https://forms.office.com/e/WQ4pnLYdHN"><i>Add a game</i></a> |
+			<a href="imageWall/"><i>Image Wall</i></a></span>
+	</div>
+	<div id="backgr">
+		<div id="contentWrapper">
 
-      <fieldset>
+			<fieldset>
 
-        <legend>
-          <p>FNAF</p>
-        </legend>
-        <ul>
-          <li><a href="/fnaf">FNAF 1</a><br></li>
-          <li><a href="/fnaf2">FNAF 2</a><br></li>
-          <li><a href="/fnaf3">FNAF 3</a><br></li>
-          <li><a href="/fnaf4">FNAF 4</a><br></li>
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Slope</p>
-        </legend>
-        <ul>
-          <li><a href="/slope">Slope</a><br></li>
-          <li><a href="/slope2">Slope 2</a><br></li>
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Moto X3M</p>
-        </legend>
-        <ul>
-          <li><a href="/motox3m">Moto X3M</a></li>
-          <li><a href="/motox3m-pool">Moto X3M Pool</a></li>
-          <li><a href="/motox3m-spooky">Moto X3M Spooky</a></li>
-          <li><a href="/motox3m-winter">Moto X3M Winter</a></li>
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>osu!</p>
-        </legend>
-        <ul>
-          <li><a href="/osu">osu!</a></li>
-          <li><a href="/osumania">osu! mania</a></li>
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Time Shooter</p>
-        </legend>
-        <ul>
-          <li><a href="/timeshooter1">Time Shooter</a><br></li>
-          <li><a href="/timeshooter2">Time Shooter 2</a><br></li>
-          <li><a href="/timeshooter3">Time Shooter 3</a><br></li>
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Fireboy Watergirl</p>
-        </legend>
-        <ul>
-          <li><a href="/fireboywatergirl">Fireboy Watergirl</a><br></li>
-          <li><a href="/fireboywatergirl2">Fireboy Watergirl 2</a><br></li>
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Papa Games</p>
-        </legend>
-        <ul>
-          <li><a href="/papasburgeria">Papa's Burgeria</a></li>
-          <li><a href="/papasfreezeria">Papa's Freezeria</a></li>
-          <li><a href="/papaspizzeria">Papa's Pizzaria</a></li>
+				<legend>
+					<p>FNAF</p>
+				</legend>
+				<ul>
+					<li><a href="/fnaf">FNAF 1</a><br></li>
+					<li><a href="/fnaf2">FNAF 2</a><br></li>
+					<li><a href="/fnaf3">FNAF 3</a><br></li>
+					<li><a href="/fnaf4">FNAF 4</a><br></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>Slope</p>
+				</legend>
+				<ul>
+					<li><a href="/slope">Slope</a><br></li>
+					<li><a href="/slope2">Slope 2</a><br></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>Moto X3M</p>
+				</legend>
+				<ul>
+					<li><a href="/motox3m">Moto X3M</a></li>
+					<li><a href="/motox3m-pool">Moto X3M Pool</a></li>
+					<li><a href="/motox3m-spooky">Moto X3M Spooky</a></li>
+					<li><a href="/motox3m-winter">Moto X3M Winter</a></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>osu!</p>
+				</legend>
+				<ul>
+					<li><a href="/osu">osu!</a></li>
+					<li><a href="/osumania">osu! mania</a></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>Time Shooter</p>
+				</legend>
+				<ul>
+					<li><a href="/timeshooter1">Time Shooter</a><br></li>
+					<li><a href="/timeshooter2">Time Shooter 2</a><br></li>
+					<li><a href="/timeshooter3">Time Shooter 3</a><br></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>Fireboy Watergirl</p>
+				</legend>
+				<ul>
+					<li><a href="/fireboywatergirl">Fireboy Watergirl</a><br></li>
+					<li><a href="/fireboywatergirl2">Fireboy Watergirl 2</a><br></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>Papa Games</p>
+				</legend>
+				<ul>
+					<li><a href="/papasburgeria">Papa's Burgeria</a></li>
+					<li><a href="/papasfreezeria">Papa's Freezeria</a></li>
+					<li><a href="/papaspizzeria">Papa's Pizzaria</a></li>
 
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>LearnToFly Games</p>
-        </legend>
-        <ul>
-          <li><a href="/learntofly">Learn To Fly</a></li>
-          <li><a href="/learntofly2">Learn To Fly 2</a></li>
-          <li><a href="/learntoflyidle">Learn To Fly Idle</a></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>LearnToFly Games</p>
+				</legend>
+				<ul>
+					<li><a href="/learntofly">Learn To Fly</a></li>
+					<li><a href="/learntofly2">Learn To Fly 2</a></li>
+					<li><a href="/learntoflyidle">Learn To Fly Idle</a></li>
 
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Tupolev Games</p>
-        </legend>
-        <ul>
-          <li><a href="/tu46">TU-46</a></li>
-          <li><a href="/tu95">TU-95</a></li>
-
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Flash Games</p>
-        </legend>
-        <ul>
-          <li><a href="/mctowerdefence">Minecraft Tower Defence</a></li>
-          <li><a href="/poom">Poom</a></li>
-          <li><a href="/sprinter">Sprinter</a></li>
-
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Vex</p>
-        </legend>
-        <ul>
-          <li><a href="/vex">Vex</a><br></li>
-          <li><a href="/vex2">Vex 2</a><br></li>
-          <li><a href="/vex3">Vex 3</a><br></li>
-          <li><a href="/vex4">Vex 4</a><br></li>
-          <li><a href="/vex5">Vex 5</a><br></li>
-          <li><a href="/vex6">Vex 6</a><br></li>
-          <li><a href="/vex7">Vex 7</a><br></li>
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Minecraft</p>
-        </legend>
-        <ul>
-          <li><a href="/minecraft/188.html">Minecraft 1.8.8</a></li>
-          <li><a href="/minecraft/188F.html">Minecraft 1.8.8 Forge</a></li>
-          <li><a href="/minecraft/173.html">Minecraft 1.7.3</a></li>
-          <li><a href="/minecraft/15.html">Minecraft 1.5</a></li>
-          <li><a href="/minecraft/13.html">Minecraft 1.3</a></li>
-          <li><a href="/minecraft/126.html">Minecraft 1.2.6</a></li>
-          <li><a href="/minecraft/indev.html">Minecraft Indev</a></li>
-        </ul>
-      </fieldset>
-      <fieldset>
-        <legend>
-          <p>Others</p>
-        </legend>
-        <ul>
-          <li><a href="/cookieclicker">Cookie Clicker</a><br></li>
-          <li><a href="/ducklife6">Duck Life 6</a></li>
-          <li><a href="/paperio">Paper IO</a></li>
-          <li><a href="/subway">Subway Surfers</a></li>
-          <li><a href="/skibiditoiletattack">Skibidi Toilet Attack (Requested By Adem B)</a></li>
-          <li><a href="/snowrider3d">Snow Rider 3D</a></li>
-          <li><a href="/tinyfishing">Tiny Fishing</a></li>
-          <li><a href="/madalincars">Maladin Cars</a></li>
-          <li><a href="/jetpackjoyride">Jetpack Joyride</a></li>
-          <li><a href="/death-run-3d">Death Run 3D</a></li>
-          <li><a href="/amongus">Among Us</a></li>
-          <li><a href="/factoryballsforever">Factory Balls Forever</a></li>
-          <li><a href="/doodlejump">Doodle Jump</a></li>
-          <li><a href="/fruitninja">Fruit Ninja</a></li>
-          <li><a href="/block-blast">Block Blast</a> </li>
-          <li><a href="/RocketLeauge2d/">Rocket Leauge 2d</a></li>
-          <li><a href="/turbowarp/">TurboWarp</a></li>
-          <li><a href="/cuttherope/">Cut The Rope</a></li>
-          <li><a href="/superhot/">Super Hot</a></li>
-          <li><a href="/stickmangolf/">Stickman Golf</a></li>
-          <li><a href="/sand">Sandbox</a></li>
-          <li><a href="/risehigher">Rise Higher</a></li>
-          <li><a href="/thirtydollarwebsite">Thirty Dollar Website</a>
-          <li><a href=/snake>Snake</a></li>
-          <li><a href="/fluidsim">Fluid Sim</a></li>
-          <li><a href="/lasthorizon">Last Horizon</a></li>
-        </ul>
-      </fieldset>
-    </div>
-  </div>
-  <a href="/Homemade/">Homemade Games >></a>
-  <hr>
-  <a href="credits.html">Made by Devs</a>
-  <br>
-  <a style="text-align: center;" href="/TOS/">Make sure to check out the ToS</a>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>Flash Games</p>
+				</legend>
+				<ul>
+					<li><a href="/mctowerdefence">Minecraft Tower Defence</a></li>
+					<li><a href="/poom">Poom</a></li>
+					<li><a href="/sprinter">Sprinter</a></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>Vex</p>
+				</legend>
+				<ul>
+					<li><a href="/vex">Vex</a><br></li>
+					<li><a href="/vex2">Vex 2</a><br></li>
+					<li><a href="/vex3">Vex 3</a><br></li>
+					<li><a href="/vex4">Vex 4</a><br></li>
+					<li><a href="/vex5">Vex 5</a><br></li>
+					<li><a href="/vex6">Vex 6</a><br></li>
+					<li><a href="/vex7">Vex 7</a><br></li>
+				</ul>
+			</fieldset>
+			<fieldset>
+				<legend>
+					<p>Others</p>
+				</legend>
+				<ul>
+					<li><a href="/cookieclicker">Cookie Clicker</a><br></li>
+					<li><a href="/ducklife6">Duck Life 6</a></li>
+					<li><a href="/paperio">Paper IO</a></li>
+					<li><a href="/subway">Subway Surfers</a></li>
+					<li><a href="/skibiditoiletattack">Skibidi Toilet Attack (Requested By Adem B)</a></li>
+					<li><a href="/snowrider3d">Snow Rider 3D</a></li>
+					<li><a href="/tinyfishing">Tiny Fishing</a></li>
+					<li><a href="/madalincars">Maladin Cars</a></li>
+					<li><a href="/jetpackjoyride">Jetpack Joyride</a></li>
+					<li><a href="/death-run-3d">Death Run 3D</a></li>
+					<li><a href="/amongus">Among Us</a></li>
+					<li><a href="/factoryballsforever">Factory Balls Forever</a></li>
+					<li><a href="/doodlejump">Doodle Jump</a></li>
+					<li><a href="/fruitninja">Fruit Ninja</a></li>
+					<li><a href="/block-blast">Block Blast</a> </li>
+					<li><a href="/RocketLeauge2d/">Rocket Leauge 2d</a></li>
+					<li><a href="/turbowarp/">TurboWarp</a></li>
+					<li><a href="/cuttherope/">Cut The Rope</a></li>
+					<li><a href="/superhot/">Super Hot</a></li>
+					<li><a href="/stickmangolf/">Stickman Golf</a></li>
+					<li><a href="/sand">Sandbox</a></li>
+					<li><a href="/risehigher">Rise Higher</a></li>
+					<li><a href="/thirtydollarwebsite">Thirty Dollar Website</a>
+					<li><a href=/snake>Snake</a></li>
+					<li><a href="/fluidsim">Fluid Sim</a></li>
+					<li><a href="/lasthorizon">Last Horizon</a></li>
+				</ul>
+			</fieldset>
+		</div>
+	</div>
+	<a href="/Homemade/">Homemade Games >></a>
+	<hr>
+	<a href="credits.html">Made by Devs</a>
+	<br>
+	<a style="text-align: center;" href="/TOS/">Make sure to check out the ToS</a>
+	<dialog id="note">You are on the school iPads. Would you like to filter for mobile-friendly games?<br>
+			<button onclick="window.location.href = 'mobile.html'">Yes</button>
+			<button onclick="document.getElementById('note').close()">No</button>
+	</dialog>
 </body>
+<script>
+	function isMobileDevice() {
+		try {
+			if (navigator.userAgentData && navigator.userAgentData.mobile !== undefined) {return navigator.userAgentData.mobile;}
+			const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+			return mobileRegex.test(navigator.userAgent || "");
+		} catch (error) {
+			console.error("Error detecting mobile device:", error);
+			return false;
+		}
+	}
+	if (isMobileDevice()) {
+		document.getElementById("note").showModal();
+	}
+</script>
 
 </html>
